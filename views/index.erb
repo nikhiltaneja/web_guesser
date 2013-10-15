@@ -2,20 +2,31 @@
   <head> 
     <style>
       body {
-      background: <%= color %>;
+        background: <%= color %>;
       }
     </style>
   </head>
   <body>
 
+    <h1> Welcome to WebGuesser </h1>
+    <h4> Please select a number between 0 and 100 </h4>
+
     <form>
-      <input type='text' name='guess' />
+      <input type='text' name='guess' autofocus/>
       <input type='submit' value='Guess!' />
     </form> 
-    
-    <p>
-      <%= message %>
-    </p>
+
+    <% if params[:cheat] == "true" %>
+      <p>
+        The secret number is <%= secret %>
+      </p>
+    <% end %>
+
+    <% if params[:guess] %>
+      <p>
+        <%= message %>
+      </p>
+    <% end %>
 
   </body>
 </html>
